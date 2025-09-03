@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO 4 - ONE</title>
+    <link rel="stylesheet" href="desafio-4.css">
+</head>
+
+<body>
+    <h1>DESAFIO 4 - ONE</h1>
+    <section class="cabinaControl">
+        <label for="campoNumero" class="cabinaControl__label">Encuentre al pikachu correcto (1 al 10): </label>
+        <input id="campoNumero" class="cabinaControl__input" type="number" placeholder="Indica un numero">
+        <div class="cabinaControl__botones">
+            <button class="cabinaControl__boton" onclick="comprobarIntento()">Intentar</button>
+            <button class="cabinaControl__boton" onclick="reiniciarJuego()">Reiniciar Juego</button>
+        </div>
+    </section>
+    <img src="./assets/pokeball.webp" alt="pokeball" class="pokeball">
+    <section class="tablero">
+        <article id="p-1" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 1</p>
+        </article>
+        <article id="p-2" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 2</p>
+        </article>
+        <article id="p-3" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 3</p>
+        </article>
+        <article id="p-4" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 4</p>
+        </article>
+        <article id="p-5" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 5</p>
+        </article>
+        <article id="p-6" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 6</p>
+        </article>
+        <article id="p-7" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 7</p>
+        </article>
+        <article id="p-8" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 8</p>
+        </article>
+        <article id="p-9" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 9</p>
+        </article>
+        <article id="p-10" class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p>Numero: 10</p>
+        </article>
+    </section>
+    <dialog id="resultado">
+        <article class="pikachu">
+            <img src="./assets/pikachu.gif" width="80px" alt="imagen de pikachu">
+            <p class="resultado__numeroPokemon"></p>
+            <p class="resultado__texto"></p>
+        </article>
+        <button onclick="cerrarModal()">Cerrar</button>
+    </dialog>
+    <script src="desafio-4.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.cabinaControl{
+    background-color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.cabinaControl__input{
+    height: 20px;
+}
+.cabinaControl__botones{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.cabinaControl__boton{
+    width: 40%;
+    height: 50px;
+}
+.tablero{
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+}
+
+.pokeball{
+    position: absolute;
+    top: 0;
+    display: none;
+    width: 45px;
+    height: 45px;
+}
+.pikachu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+dialog{
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid black;
+    padding: 5%;
+    background-color: gainsboro;
+    width: 280px;
+    height: 200px;
+    align-items: center;
+    margin: auto;
+}
+dialog button{
+    width: 100px;
+    height: 50px;
+}
