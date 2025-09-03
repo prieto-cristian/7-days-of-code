@@ -1,0 +1,145 @@
+*{
+    font-family: sans-serif;
+}
+.lista{
+    background-color: #e9a551;
+    margin: 0px 7%;
+    display: flex;
+    justify-content: center;    
+    gap: 5%;
+    border-radius: 20px 20px 20px 20px;
+    padding: 2%;
+    min-height: 80vh;
+}
+.lista > section{
+    width: 45%;
+    background: repeating-linear-gradient(
+    0deg,
+    #f4dbb3, /* Color de la línea */
+    #f4dbb3 44px, /* Fin de la primera línea */
+    rgb(183, 181, 181) 45px, /* Inicio de la siguiente línea */
+    rgb(183, 181, 181) 45.3px  /* Fin de la segunda línea */
+  );
+}
+.lista__hojaIzquierda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lista__hojaIzquierda__titulo,
+.lista__hojaDerecha__titulo{
+    font-family: monospace;
+    font-size: 30px;
+}
+.hojaIzquierda__botonesFiltro{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.hojaIzquierda__botonesFiltro__boton,
+.hojaIzquierda__botonesParaListas__boton{
+    width: 120px;
+    height: 50px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 0px 2px 0px 0px gray;
+    font-weight: bold;
+}
+.hojaIzquierda__botonesFiltro__boton:hover,
+.hojaIzquierda__botonesParaListas__boton:hover{
+    box-shadow: 5px 4px 2px 0px black;
+}
+.hojaIzquierda__botonesFiltro__boton:first-child{
+    background-color: aqua;
+}
+.hojaIzquierda__botonesFiltro__boton:nth-child(3){
+    background-color: yellow;
+}
+.hojaIzquierda__botonesFiltro__boton:nth-child(4){
+    background-color: violet;
+}
+.hojaIzquierda__botonesFiltro__boton:nth-child(5){
+    background-color: orangered;
+}
+.hojaIzquierda__botonesFiltro__boton:nth-child(6){
+    background-color: springgreen;
+}
+
+.hojaIzquierda__botonesParaListas{
+    margin: 0px 0px 7% 0px;
+    display: flex;
+    gap: 40px;
+}
+.bajar{
+    margin: auto 0px 20px 0px;
+}
+.hojaIzquierda__botonesParaListas__boton{
+    width: 180px;
+    font-size: 16px;
+}
+h1{
+    display: block;
+    text-align: center;
+    font-size: 33px;
+}
+
+/* Estilos del dialogo */
+.entradaDeDatos{
+    width: 270px;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid gray;
+    box-shadow: -2px 4px 0px 0px blue;
+    position: absolute;
+    top: 35%;
+    right: 25%;
+    background-color: #fdee21;
+}
+.entradaDeDatos__boton{
+    margin: 0px auto;
+    height: 40px;
+    width: 80%;
+}
+
+
+/* Estilos de la hoja derecha */
+.lista__hojaDerecha{
+    padding-left: 2%;
+}
+.lista__hojaDerecha__titulo{
+    text-align: center;
+}
+.lista__hojaDerecha__listado_titulo{
+    width: 90%;
+    font-family: monospace;
+    font-size: 20px;
+    border-bottom: 5px solid;
+}
+.lista__hojaDerecha__listado_categoria{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.color-celeste{
+    border-color: aqua;
+}
+.color-blanco{
+    border-color: beige;
+}
+
+.color-amarillo{
+    border-color: yellow;
+}
+.color-morado{
+    border-color: violet;
+}
+.color-naranja{
+    border-color: orangered;
+}
+.color-verde{
+    border-color: springgreen;
+}
+.color-negro{
+    border-color: black;
+}

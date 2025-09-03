@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO 5 - ONE - ALURA LATAM</title>
+    <link rel="stylesheet" href="./desafio-5.css">
+</head>
+
+<body>
+    <h1>DESAFIO 5 - LISTA DE COMPRAS</h1>
+    <section class="lista">
+        <section class="lista__hojaIzquierda">
+            <h2 class="lista__hojaIzquierda__titulo">Filtra por Categoria</h2>
+            <!-- Unos botones de filtro categorias -->
+            <section class="hojaIzquierda__botonesFiltro">
+                <button class="hojaIzquierda__botonesFiltro__boton">FRUTAS</button>
+                <button class="hojaIzquierda__botonesFiltro__boton">LACTEOS</button>
+                <button class="hojaIzquierda__botonesFiltro__boton">CONGELADOS</button>
+                <button class="hojaIzquierda__botonesFiltro__boton">DULCES</button>
+                <button class="hojaIzquierda__botonesFiltro__boton">BEBIDAS</button>
+                <button class="hojaIzquierda__botonesFiltro__boton">OTROS</button>
+                <button class="hojaIzquierda__botonesFiltro__boton">TODOS</button>
+            </section>
+            <h2 class="lista__hojaIzquierda__titulo bajar">Operaciones</h2>
+            <section class="hojaIzquierda__botonesParaListas">
+                <button class="hojaIzquierda__botonesParaListas__boton" onclick="abrirDialogo()">Agregar Productos</button>
+                <button class="hojaIzquierda__botonesParaListas__boton" onclick="limpiarListas()">Limpiar Listas</button>
+            </section>
+        </section>
+        <section class="lista__hojaDerecha">
+            <h2 class="lista__hojaDerecha__titulo">Listado</h2>
+            <section class="lista__hojaDerecha__listado">
+                <h3 class="lista__hojaDerecha__listado_titulo">Todos</h3>
+                <ul class="lista__hojaDerecha__listado_categoria" id="todos"></ul>
+                <ul class="lista__hojaDerecha__listado_categoria" id="especifico"></ul>
+            </section>
+        </section>
+    </section>
+    <dialog id="dialogoProducto" class="entradaDeDatos">
+        <p id="resultadoOperacion"></p>
+        <h2 class="entradaDeDatos__titulo">Agregar Producto</h2>
+        <label for="campoNombre">Nombre:</label>
+        <input id="campoNombre" type="text">
+        <select name="campoCategoria" id="campoCategoria">
+            <option id="opcionInicial" value="-1">Seleccione una opcion...</option>
+            <option value="frutas">Frutas</option>
+            <option value="lacteos">Lacteos</option>
+            <option value="congelados">Congelados</option>
+            <option value="dulces">Dulces</option>
+            <option value="bebidas">Bebidas</option>
+            <option value="otros">Otros</option>
+        </select>
+        <button class="entradaDeDatos__boton" onclick="agregarProductos()">Agregar</button>
+        <button class="entradaDeDatos__boton" onclick="cerrarDialogo()">Cerrar</button>
+    </dialog>
+    <script src="desafio-5.js"></script>
+</body>
+
+</html>
