@@ -50,7 +50,6 @@ function mostrarLista(unaLista, nombreTitulo, claseColor) {
 }
 // Darle a cada boton su metodo
 botonesFiltros.forEach(element => {
-    console.log(element.textContent);
     switch (element.textContent) {
         case ("FRUTAS"): {
             element.addEventListener("click", () => mostrarLista(listaFrutas, "Frutas", "color-celeste"));
@@ -141,11 +140,45 @@ function crearElemento(texto) {
 
     let inputElemento = document.createElement("input");
     inputElemento.setAttribute("type", "checkbox");
-    
+    // Crear el boton para eliminar
+    let buttonElemento = document.createElement("button");
+    buttonElemento.textContent = "Eliminar";
+    buttonElemento.addEventListener("click", ()=>{
+        // si encontramos el valor en la lista general, significa que tambien
+        // existe en alguna lista especifica.
+        if(listaTodos.indexOf(texto) != -1){
+            // Eliminar de la lista general
+            listaTodos.splice(listaTodos.indexOf(texto), 1);
+            // Encontrar la lista que contiene ese valor y elimnar el elemento
+            if(listaBebidas.includes(texto)){
+                listaBebidas.splice(listaBebidas.indexOf(texto), 1);
+            }
+            else if(listaCongelados.includes(texto)){
+                listaCongelados.splice(listaCongelados.indexOf(texto), 1);
+            }
+            else if(listaDulces.includes(texto)){
+                listaDulces.splice(listaDulces.indexOf(texto), 1);
+            }
+            else if(listaFrutas.includes(texto)){
+                listaFrutas.splice(listaFrutas.indexOf(texto), 1);
+            }
+            else if(listaLacteos.includes(texto)){
+                listaLacteos.splice(listaLacteos.indexOf(texto), 1);
+            }
+            else{
+                listaOtros.splice(listaOtros.indexOf(texto), 1);
+            }
+            liElemento.remove();
+        }else{
+            alert(`No encontramos el elemento: ${texto} en ninguna lista`);
+        }
+
+    });
     // Armar
     labelElemento.appendChild(inputElemento);
     liElemento.appendChild(labelElemento);
-
+    liElemento.appendChild(buttonElemento);
+    console.log(labelElemento.textContent);
     return liElemento;
 }
 function abrirDialogo() {
