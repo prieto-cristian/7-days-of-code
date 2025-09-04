@@ -2,14 +2,15 @@ const dialogoAgregarProducto = document.getElementById("dialogoProducto");
 const campoNombreProducto = document.getElementById("campoNombre");
 const opcionSinSeleccionar = document.getElementById("opcionInicial");
 const cbxOpciones = document.getElementById('campoCategoria');
-const ulListaTodos = document.getElementById("todos");
-const ulListaEspecifica = document.getElementById("especifico");
+const ulListadoItems = document.getElementById("listadoItems");
 const tituloListado = document.querySelector(".lista__hojaDerecha__listado_titulo");
 const botonesFiltros = document.querySelectorAll(".hojaIzquierda__botonesFiltro > button");
 const resultadoOperacion = document.getElementById("resultadoOperacion");
 
+let tituloActual = "todos";
 let colorTituloActual = "";
 let opcionCategoriaActual = "-1";
+
 let listaFrutas = ["Zanahoria"];
 let listaLacteos = ["Leche", "Yogur"];
 let listaCongelados = [];
@@ -18,65 +19,56 @@ let listaBebidas = ["Fernet", "Gancia", "Cerveza"];
 let listaOtros = [];
 let listaTodos = ["Zanahoria", "Leche", "Yogur", "Fernet", "Gancia", "Cerveza"];
 
-// funcionalidad para filtrar
-function mostrarLista(unaLista, nombreTitulo, claseColor) {
-    let ulAModificar;
-    if (nombreTitulo == "Todos") {
-        // Limpiamos la lista de todos los items
-        limpiarItemsVisuales(document.querySelectorAll("#todos > li"));
-        ulAModificar = ulListaTodos;
-        ulListaTodos.style.display = "flex";
-        ulListaEspecifica.style.display = "none";
-    } else {
-        // Limpiamos los items visuales
-        limpiarItemsVisuales(document.querySelectorAll("#especifico > li"));
-        // Ocultamos la lista general
-        ulListaTodos.style.display = "none";
-        ulListaEspecifica.style.display = "flex";
-        ulAModificar = ulListaEspecifica;
-    }
-
+mostrarLista(listaTodos);
+// funcionalidad para mostrar
+function mostrarLista(unaLista) {
+    // Limpiamos los items visuales
+    limpiarItemsVisuales(ulListadoItems.querySelectorAll("li"));
+    unaLista.forEach(element => {
+        let itemElemento = crearElemento(element);
+        ulListadoItems.appendChild(itemElemento);
+    })
+}
+function configurarTituloListado(nombreTitulo, claseColor) {
     // Modificamos el titulo
     tituloListado.textContent = nombreTitulo;
+    // Al iniciar el programa no tiene clase de color asignado
     if (colorTituloActual != "") {
         tituloListado.classList.remove(colorTituloActual);
     }
     tituloListado.classList.add(claseColor);
-    unaLista.forEach(element => {
-        let itemElemento = crearElemento(element);
-        ulAModificar.appendChild(itemElemento);
-    })
     colorTituloActual = claseColor;
+    tituloActual = nombreTitulo.toLocaleLowerCase();
 }
 // Darle a cada boton su metodo
 botonesFiltros.forEach(element => {
     switch (element.textContent) {
         case ("FRUTAS"): {
-            element.addEventListener("click", () => mostrarLista(listaFrutas, "Frutas", "color-celeste"));
+            element.addEventListener("click", () => { mostrarLista(listaFrutas); configurarTituloListado("Frutas", "color-celeste") });
             break;
         }
         case ("LACTEOS"): {
-            element.addEventListener("click", () => mostrarLista(listaLacteos, "Lacteos", "color-blanco"));
+            element.addEventListener("click", () => { mostrarLista(listaLacteos); configurarTituloListado("Lacteos", "color-blanco") });
             break;
         }
         case ("CONGELADOS"): {
-            element.addEventListener("click", () => mostrarLista(listaCongelados, "Congelados", "color-amarillo"));
+            element.addEventListener("click", () => { mostrarLista(listaCongelados); configurarTituloListado("Congelados", "color-amarillo") });
             break;
         }
         case ("DULCES"): {
-            element.addEventListener("click", () => mostrarLista(listaDulces, "Dulces", "color-morado"));
+            element.addEventListener("click", () => { mostrarLista(listaDulces); configurarTituloListado("Dulces", "color-morado") });
             break;
         }
         case ("BEBIDAS"): {
-            element.addEventListener("click", () => mostrarLista(listaBebidas, "Bebidas", "color-naranja"));
+            element.addEventListener("click", () => { mostrarLista(listaBebidas); configurarTituloListado("Bebidas", "color-naranja") });
             break;
         }
         case ("OTROS"): {
-            element.addEventListener("click", () => mostrarLista(listaOtros, "Otros", "color-verde"));
+            element.addEventListener("click", () => { mostrarLista(listaOtros); configurarTituloListado("Otros", "color-verde") });
             break;
         }
         default: {
-            element.addEventListener("click", () => mostrarLista(listaTodos, "Todos", "color-negro"));
+            element.addEventListener("click", () => { mostrarLista(listaTodos); configurarTituloListado("Todos", "color-negro") });
             break;
         }
     }
@@ -89,34 +81,43 @@ cbxOpciones.addEventListener("change", function () {
 function agregarProductos() {
     if (campoNombreProducto.value != "") {
         if ((opcionCategoriaActual != "-1")) {
-            switch (opcionCategoriaActual) {
-                case ("frutas"): {
-                    listaFrutas.push(campoNombreProducto.value);
-                    break;
+            if(esNombreUnico(campoNombreProducto.value)){
+                switch (opcionCategoriaActual) {
+                    case ("frutas"): {
+                        listaFrutas.push(campoNombreProducto.value);
+                        break;
+                    }
+                    case ("lacteos"): {
+                        listaLacteos.push(campoNombreProducto.value);
+                        break;
+                    }
+                    case ("congelados"): {
+                        listaCongelados.push(campoNombreProducto.value);
+                        break;
+                    }
+                    case ("dulces"): {
+                        listaDulces.push(campoNombreProducto.value);
+                        break;
+                    }
+                    case ("bebidas"): {
+                        listaBebidas.push(campoNombreProducto.value);
+                        break;
+                    }
+                    case ("otros"): {
+                        listaOtros.push(campoNombreProducto.value);
+                        break;
+                    }
                 }
-                case ("lacteos"): {
-                    listaLacteos.push(campoNombreProducto.value);
-                    break;
+                listaTodos.push(campoNombreProducto.value);
+                resultadoOperacion.textContent = `Agregamos: '${campoNombreProducto.value}' en la categoria '${opcionCategoriaActual}'. Lista de compras actualizada!`;
+                // Si el titulo actual es Todos o coincide con la categoria seleccionada para el items, entonces mostramos el elemento.
+                if ((tituloActual == "todos") || (tituloActual == opcionCategoriaActual)) {
+                    let liElemento = crearElemento(campoNombreProducto.value);
+                    ulListadoItems.appendChild(liElemento);
                 }
-                case ("congelados"): {
-                    listaCongelados.push(campoNombreProducto.value);
-                    break;
-                }
-                case ("dulces"): {
-                    listaDulces.push(campoNombreProducto.value);
-                    break;
-                }
-                case ("bebidas"): {
-                    listaBebidas.push(campoNombreProducto.value);
-                    break;
-                }
-                default: {
-                    listaOtros.push(campoNombreProducto.value);
-                    break;
-                }
+            }else{
+                alert(`El nombre: '${campoNombreProducto.value}' ya esta registrado en otro item. Por favor escriba otro nombre`, "Advertencia");
             }
-            listaTodos.push(campoNombreProducto.value);
-            mostrarElemento(campoNombreProducto.value);
         } else {
             alert("Debe seleccionar una categoria", "Advertencia");
         }
@@ -124,13 +125,9 @@ function agregarProductos() {
         alert("Ingrese el nombre del producto", "Advertencia");
     }
 }
-function mostrarElemento(itemTexto) {
-    // Debo crear el li
-    let itemElemento = crearElemento(itemTexto);
-    // Agregarlo al ul
-    ulListaTodos.appendChild(itemElemento);
-    // Colocar en el dialogo el texto que indica que agregamos el producto
-    resultadoOperacion.textContent = `Agregamos: ${itemTexto} a la lista de compras`;
+// Va consultar a todas las listas especificas si ese nombre ya se encuentra en la lista
+function esNombreUnico(nombre){
+    return !(listaBebidas.includes(nombre) || listaCongelados.includes(nombre) || listaDulces.includes(nombre) || listaFrutas.includes(nombre) || listaLacteos.includes(nombre) || listaOtros.includes(nombre));
 }
 
 function crearElemento(texto) {
@@ -140,49 +137,51 @@ function crearElemento(texto) {
 
     let inputElemento = document.createElement("input");
     inputElemento.setAttribute("type", "checkbox");
-    // Crear el boton para eliminar
+    inputElemento.addEventListener("click", function(){
+        if(inputElemento.checked){
+            liElemento.style.textDecoration = "line-through";
+        }else{
+            liElemento.style.textDecoration = "none";
+        }
+    })
+    // Crear el boton para eliminar y se le agrega el comportamiento
     let buttonElemento = document.createElement("button");
     buttonElemento.textContent = "Eliminar";
-    buttonElemento.addEventListener("click", ()=>{
+    buttonElemento.addEventListener("click", () => {
         // si encontramos el valor en la lista general, significa que tambien
         // existe en alguna lista especifica.
-        if(listaTodos.indexOf(texto) != -1){
-            // Eliminar de la lista general
+        if (listaTodos.indexOf(texto) != -1) {
             listaTodos.splice(listaTodos.indexOf(texto), 1);
+
             // Encontrar la lista que contiene ese valor y elimnar el elemento
-            if(listaBebidas.includes(texto)){
+            if (listaBebidas.includes(texto)) {
                 listaBebidas.splice(listaBebidas.indexOf(texto), 1);
             }
-            else if(listaCongelados.includes(texto)){
+            else if (listaCongelados.includes(texto)) {
                 listaCongelados.splice(listaCongelados.indexOf(texto), 1);
             }
-            else if(listaDulces.includes(texto)){
+            else if (listaDulces.includes(texto)) {
                 listaDulces.splice(listaDulces.indexOf(texto), 1);
             }
-            else if(listaFrutas.includes(texto)){
+            else if (listaFrutas.includes(texto)) {
                 listaFrutas.splice(listaFrutas.indexOf(texto), 1);
             }
-            else if(listaLacteos.includes(texto)){
+            else if (listaLacteos.includes(texto)) {
                 listaLacteos.splice(listaLacteos.indexOf(texto), 1);
             }
-            else{
+            else {
                 listaOtros.splice(listaOtros.indexOf(texto), 1);
             }
             liElemento.remove();
-        }else{
-            alert(`No encontramos el elemento: ${texto} en ninguna lista`);
         }
-
     });
-    // Armar
+    // Armar Elemento Visual
     labelElemento.appendChild(inputElemento);
     liElemento.appendChild(labelElemento);
     liElemento.appendChild(buttonElemento);
-    console.log(labelElemento.textContent);
     return liElemento;
 }
 function abrirDialogo() {
-    // Mostrar el dialogo para ingresar productos
     dialogoAgregarProducto.style.display = "flex";
 }
 function cerrarDialogo() {
@@ -206,11 +205,7 @@ function limpiarListas() {
     listaBebidas = [];
     listaOtros = [];
     listaTodos = [];
-
-    let itemsListaTodos = document.querySelectorAll("#todos > li");
-    let itemsListaEspecifica = document.querySelectorAll("#especifico > li");
-    limpiarItemsVisuales(itemsListaTodos);
-    limpiarItemsVisuales(itemsListaEspecifica);
+    limpiarItemsVisuales(ulListadoItems.querySelectorAll("li"));
 }
 function limpiarItemsVisuales(itemsLi) {
     itemsLi.forEach(element => {
