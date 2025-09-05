@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+p{
+    font-size: 60px;
+    font-family:  "IBM Plex Mono", monospace;
+}
+body{
+    background-color: bisque;
+}
+h1{
+    font-family: monospace;
+}
+.calculadora{
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 40px;
+    width: 500px;
+    margin: 0px auto;
+    border: 3px solid black;
+    height: 730px;
+    box-shadow: 8px 12px 0px 0px #747474;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+}
+
+.calculadora__pantalla{
+    background-color: #6f98b4;
+    width: 90%;
+    height: 220px;
+    border-radius: 40px;
+    border: 14px solid black;
+    margin: 0px auto;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.calculadora__botones button{
+    width: 75px;
+    height: 65px;
+    border-radius:11px;
+    border: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 29px;
+}
+.calculadora__botones__fila{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Colores botones y efecto hover*/
+.calculadora__botones__apagado,
+.calculadora__botones__encendido,
+.calculadora__botones__borrar,
+.calculadora__botones__operacion{
+    color: white;
+}
+.calculadora__botones__apagado{
+    background-color: #f01a18;
+    box-shadow: 0px 6px 0px 0px #970101;
+}
+.calculadora__botones__encendido{
+    background-color: #44d752;
+    box-shadow: 0px 6px 0px 0px #007d06;
+}
+.calculadora__botones__borrar{
+    background-color: #4ac89e;
+    box-shadow: 0px 6px 0px 0px #098d63;
+}
+.calculadora__botones__operacion{
+    background-color: #3f8bc7;
+    box-shadow: 0px 6px 0px 0px #01427a;
+}
+.calculadora__botones__memoria{
+    background-color: #f69217;
+    box-shadow: 0px 6px 0px 0px #914f03;
+}
+.calculadora__botones__numero,
+.calculadora__botones__simbolo{
+    background-color: #c8c3bf;
+    box-shadow: 0px 6px 0px 0px #382b23;
+}
+
+.calculadora__botones__resultado{
+    background-color: #ebd108;
+    box-shadow: 0px 6px 0px 0px #978703;
+}
+.calculadora__botones button:hover{
+    box-shadow: -1px -1px 0px 1px black;
+}
+/* Estilar para que el boton resultado "=" ocupe 2 filas */
+.calculadora__botones__botonMasGrande{
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculadora__botones__botonMasGrande > div:last-child{
+    justify-self: stretch;
+}
+.calculadora__botones__botonMasGrande > div:last-child .calculadora__botones__resultado{
+    height: 100%;
+}
+.calculadora__agrupar__filas > .calculadora__botones__fila{
+    gap: 21px;
+}
+
+#resultado{
+    margin: 0;
+    word-wrap: break-word;
+}
+
+/* Estilos de la memoria */
+.memoria p{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO 7 - ONE - ALURA LATAM</title>
+    <link rel="stylesheet" href="desafio-7.css">
+</head>
+
+<body>
+    <h1>DESAFIO 7 - ONE - ALURA LATAM</h1>
+    <section class="memoria">
+        <p id="memoria__valor"></p>
+    </section>
+    <section class="calculadora">
+        <div id="pantalla" class="calculadora__pantalla">
+            <p id="resultado"></p>
+        </div>
+        <div class="calculadora__botones">
+            <div class="calculadora__botones__fila">
+                <button class="calculadora__botones__apagado" onclick="apagar()">OFF</button>
+                <button class="calculadora__botones__encendido" onclick="prender()">ON</button>
+                <button class="calculadora__botones__borrar" onclick="resetear()">CE</button>
+                <button class="calculadora__botones__operacion">+</button>
+                <button class="calculadora__botones__operacion">-</button>
+            </div>
+            <div class="calculadora__botones__fila">
+                <button class="calculadora__botones__memoria" onclick="resetearMemoria()">MC</button>
+                <button class="calculadora__botones__numero">7</button>
+                <button class="calculadora__botones__numero">8</button>
+                <button class="calculadora__botones__numero">9</button>
+                <button class="calculadora__botones__operacion">x</button>
+            </div>
+            <div class="calculadora__botones__fila">
+                <button class="calculadora__botones__memoria" onclick="sumarMemoria()">M+</button>
+                <button class="calculadora__botones__numero">4</button>
+                <button class="calculadora__botones__numero">5</button>
+                <button class="calculadora__botones__numero">6</button>
+                <button class="calculadora__botones__operacion">/</button>
+            </div>
+            <div class="calculadora__botones__botonMasGrande">
+                <div class="calculadora__agrupar__filas">
+                    <div class="calculadora__botones__fila">
+                        <button class="calculadora__botones__memoria" onclick="restarMemoria()">M-</button>
+                        <button class="calculadora__botones__numero">1</button>
+                        <button class="calculadora__botones__numero">2</button>
+                        <button class="calculadora__botones__numero">3</button>
+                    </div>
+                    <div class="calculadora__botones__fila">
+                        <button class="calculadora__botones__simbolo">.</button>
+                        <button class=""></button>
+                        <button class="calculadora__botones__numero">0</button>
+                        <button class=""></button>
+                    </div>
+                </div>
+                <div>
+                    <button class="calculadora__botones__resultado" onclick="mostrarResultado()">=</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="desafio-7.js"></script>
+</body>
+
+</html>
